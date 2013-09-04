@@ -1,0 +1,68 @@
+urllib.urlopen(url[, data[, proxies]]) 
+
+
+
+
+Here is an example session that uses the GET method to retrieve a URL containing parameters:
+
+>>> import urllib
+>>> params = urllib.urlencode({'spam': 1, 'eggs': 2, 'bacon': 0})
+>>> f = urllib.urlopen("http://www.musi-cal.com/cgi-bin/query?%s" % params)
+>>> print f.read()
+The following example uses the POST method instead:
+
+>>> import urllib
+>>> params = urllib.urlencode({'spam': 1, 'eggs': 2, 'bacon': 0})
+>>> f = urllib.urlopen("http://www.musi-cal.com/cgi-bin/query", params)
+>>> print f.read()
+The following example uses an explicitly specified HTTP proxy, overriding environment settings:
+
+>>> import urllib
+>>> proxies = {'http': 'http://proxy.example.com:8080/'}
+>>> opener = urllib.FancyURLopener(proxies)
+>>> f = opener.open("http://www.python.org")
+>>> f.read()
+The following example uses no proxies at all, overriding environment settings:
+
+>>> import urllib
+>>> opener = urllib.FancyURLopener({})
+>>> f = opener.open("http://www.python.org/")
+>>> f.read()
+
+
+
+
+
+
+
+HTTPLIB
+
+class httplib.HTTPConnection(host[, port[, strict[, timeout[, source_address]]]]) 
+HTTPConnection.request(method, url[, body[, headers]]) 
+HTTPConnection.getresponse() 
+HTTPConnection.set_debuglevel(level) 
+HTTPConnection.set_tunnel(host, port=None, headers=None) 
+HTTPConnection.connect() 
+HTTPConnection.close() 
+HTTPConnection.putrequest(request, selector[, skip_host[, skip_accept_encoding]]) 
+HTTPConnection.putheader(header, argument[, ...]) 发送RFC-822头
+HTTPConnection.endheaders() 发生头结束信号(空白行)
+HTTPConnection.send(data) 头结束后发生数据
+
+HTTP连接默认80端口
+class httplib.HTTPSConnection(host[, port[, key_file[, cert_file[, strict[, timeout[, source_address]]]]]]) 
+
+SSL HTTP连接默认443端口
+class httplib.HTTPResponse(sock[, debuglevel=0][, strict=0]) 
+HTTPResponse.read([amt])
+HTTPResponse.getheader(name[, default]) 获取某个头值
+HTTPResponse.getheaders() return(header, value) 
+HTTPResponse.fileno() 
+HTTPResponse.msg 
+HTTPResponse.version 
+HTTPResponse.status 
+HTTPResponse.reason 
+
+
+
+class httplib.HTTPMessage   一个HTTP响应的headers
