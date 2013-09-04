@@ -1,0 +1,1 @@
+python LotterySetUp.py  py2exe
